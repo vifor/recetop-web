@@ -1,6 +1,9 @@
 // src/components/RecipeCard.tsx
+'use client';
 import Image from 'next/image';
 import { Recipe } from '../../data/models';
+
+
 
 interface RecipeCardProps {
   recipe: Recipe;
