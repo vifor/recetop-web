@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import RecipeCard from '../app/components/RecipeCard';
 import { mockRecipes } from '@/data/mockRecipes';
+import RecipeCarousel from './components/RecipeCarousel';
 
 export default function HomePage() {
   // Tomamos solo la primera receta para la prueba inicial
@@ -14,6 +15,10 @@ export default function HomePage() {
       <div className="w-full max-w-xs mx-auto"> {/* Contenedor para la prueba */}
         <RecipeCard recipe={testRecipe} />
       </div>
+      <div className="mt-12">
+        <RecipeCarousel title="Postres Populares" recipes={mockRecipes} />
+      </div>
+
     </main>
   );
 }
