@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,12 +29,14 @@ export default function RootLayout({
     <html lang="en">
     <body className={`${geistSans.className} flex flex-col min-h-screen`}>
    <AuthProvider>
+       <FavoritesProvider>
         <Navbar />
         <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
           {children} {/* Aquí se renderizará el contenido de page.tsx */}
         </main>
         <Footer />
-        </AuthProvider>
+       </FavoritesProvider>
+    </AuthProvider>
       </body>
     </html>
   );
