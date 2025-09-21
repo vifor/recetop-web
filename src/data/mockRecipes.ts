@@ -28,7 +28,7 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: 4,
-  title: 'Tarta de espinaca',
+  title: 'Tarta Quiche de espinaca',
   imageUrl: '/images/tartadeespinaca.jpg',
   category: 'Platos Principales',
     duration: 90,

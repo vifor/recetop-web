@@ -42,7 +42,8 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
       <div className="p-4 bg-white dark:bg-gray-800 relative">
         <div className="pr-10">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white line-clamp-2">
+          {/* --- CAMBIO CLAVE AQUÍ --- */}
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white line-clamp-2 min-h-[2.75rem]">
             {recipe.title}
           </h3>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
