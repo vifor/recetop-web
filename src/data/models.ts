@@ -3,6 +3,8 @@ export interface Recipe {
   title: string;
   imageUrl: string;
   category: 'Postres' | 'Platos Principales' | 'Ensaladas' | 'Sopas';
-  duration: number; 
+  duration: number; // Duración en minutos
   difficulty: 'Fácil' | 'Media' | 'Difícil';
+  ingredients: string[]; 
+  steps: string[];       
 }

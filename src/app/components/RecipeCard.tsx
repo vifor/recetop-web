@@ -8,15 +8,18 @@ import { useFavorites } from '@/context/FavoritesContext';
 
 interface RecipeCardProps {
   recipe: Recipe;
+  onCardClick: (recipe: Recipe) => void; // <-- CAMBIO (Asegúrate de que esta prop esté aquí)
 }
 
-export default function RecipeCard({ recipe }: RecipeCardProps) {
+export default function RecipeCard({ recipe, onCardClick }: RecipeCardProps) { // <-- CAMBIO (Asegúrate de recibir onCardClick)
   const { user } = useAuth();
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
   const isCurrentlyFavorite = user ? isFavorite(recipe.id) : false;
 
-  const handleFavoriteClick = () => {
+  // <-- CAMBIO: Modificamos el handler para detener la propagación del evento
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // ¡Muy importante! Evita que el clic "burbujee" hacia la tarjeta.
     if (!user) {
       alert('Necesitas iniciar sesión para añadir favoritos.');
       return;
@@ -30,19 +33,22 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
   };
 
   return (
-    <div className="group block overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    // <-- CAMBIO: Añadimos onClick y cursor-pointer al div principal
+    <div 
+      className="group block overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+      onClick={() => onCardClick(recipe)}
+    >
       <div className="relative w-full h-40">
         <Image
           src={recipe.imageUrl}
           alt={recipe.title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          className="object-cover transition-transform duration-30-0 group-hover:scale-110"
         />
       </div>
 
       <div className="p-4 bg-white dark:bg-gray-800 relative">
         <div className="pr-10">
-          {/* --- CAMBIO CLAVE AQUÍ --- */}
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white line-clamp-2 min-h-[2.75rem]">
             {recipe.title}
           </h3>
@@ -54,7 +60,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
         <div className="absolute bottom-4 right-4">
           <FavoriteIcon
             isFavorite={isCurrentlyFavorite}
-            onClick={handleFavoriteClick}
+            onClick={handleFavoriteClick} // El onClick del ícono ahora llama al nuevo handler
           />
         </div>
       </div>
