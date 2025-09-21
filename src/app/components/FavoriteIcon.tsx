@@ -6,7 +6,7 @@ import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 
 interface FavoriteIconProps {
   isFavorite: boolean;
-  onClick: () => void;
+ onClick: (e: React.MouseEvent) => void; 
 }
 
 export default function FavoriteIcon({ isFavorite, onClick }: FavoriteIconProps) {
