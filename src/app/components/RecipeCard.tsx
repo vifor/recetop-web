@@ -52,7 +52,7 @@ export default function RecipeCard({ recipe, onCardClick }: RecipeCardProps) { /
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white line-clamp-2 min-h-[2.75rem]">
             {recipe.title}
           </h3>
-      <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             {recipe.duration} min · {recipe.difficulty}
           </p>
         </div>
