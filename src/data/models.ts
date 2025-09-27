@@ -1,10 +1,15 @@
+// src/data/models.ts
+export const POSSIBLE_CATEGORIES = ["Postre", "Plato principal", "Panaderia", "Bebida"] as const;
+export type RecipeCategory = typeof POSSIBLE_CATEGORIES[number];
+
 export interface Recipe {
-  id: number;
-  title: string;
-  imageUrl: string;
-  category: 'Postres' | 'Platos Principales' | 'Ensaladas' | 'Sopas';
-  duration: number; // Duración en minutos
-  difficulty: 'Fácil' | 'Media' | 'Difícil';
+  id: string; 
+  name: string; 
+  imageUrl: string; 
   ingredients: string[]; 
-  steps: string[];       
+  steps: string[];
+  categories: RecipeCategory[]; 
+  
+  duration: number;
+  difficulty: 'Fácil' | 'Media' | 'Difícil';
 }

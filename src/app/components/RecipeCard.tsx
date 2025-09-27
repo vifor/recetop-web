@@ -17,10 +17,8 @@ export default function RecipeCard({ recipe, onCardClick }: RecipeCardProps) { /
 
   const isCurrentlyFavorite = user ? isFavorite(recipe.id) : false;
 
-  // <-- CAMBIO: Modificamos el handler para detener la propagación del evento
   const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // ¡Muy importante! Evita que el clic "burbujee" hacia la tarjeta.
-    if (!user) {
+    e.stopPropagation();     if (!user) {
       alert('Necesitas iniciar sesión para añadir favoritos.');
       return;
     }
@@ -41,7 +39,7 @@ export default function RecipeCard({ recipe, onCardClick }: RecipeCardProps) { /
       <div className="relative w-full h-40">
         <Image
           src={recipe.imageUrl}
-          alt={recipe.title}
+          alt={recipe.name}
           fill
           className="object-cover transition-transform duration-30-0 group-hover:scale-110"
         />

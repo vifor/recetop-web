@@ -1,17 +1,15 @@
-// src/app/page.tsx
-'use client'; // ¡Importante! Esta página ahora necesita manejar estado.
+'use client'; 
 
-import { useState } from 'react'; // Importamos useState
+import { useState } from 'react'; 
 import RecipeCarousel from './components/RecipeCarousel';
 import { mockRecipes } from '@/data/mockRecipes';
-import { Recipe } from '@/data/models'; // Importamos el tipo Recipe
+import { Recipe } from '@/data/models'; 
 import RecipeDetailModal from './components/RecipeDetailModal';
 export default function HomePage() {
-  // Este estado guardará la receta que está seleccionada para ver en el modal
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
-  const postres = mockRecipes.filter((r) => r.category === 'Postres');
-  const platosPrincipales = mockRecipes.filter((r) => r.category === 'Platos Principales');
+  const postres = mockRecipes.filter((r) => r.categories.includes('Postre'));
+  const platosPrincipales = mockRecipes.filter((r) => r.categories.includes('Plato principal'));
 
   // Función para abrir el modal
   const handleCardClick = (recipe: Recipe) => {

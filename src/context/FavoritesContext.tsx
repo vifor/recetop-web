@@ -1,32 +1,30 @@
-// src/context/FavoritesContext.tsx
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// 1. Definimos la "forma" de nuestro contexto
 interface FavoritesContextType {
-  favoriteIds: number[];
-  addFavorite: (id: number) => void;
-  removeFavorite: (id: number) => void;
-  isFavorite: (id: number) => boolean;
+  favoriteIds: string[]; 
+  addFavorite: (id: string) => void; 
+  removeFavorite: (id: string) => void;
+  isFavorite: (id: string) => boolean; 
 }
 
-// 2. Creamos el contexto
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
-// 3. Creamos el Proveedor
-export function FavoritesProvider({ children }: { children: ReactNode }) {
-  const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
 
-  const addFavorite = (id: number) => {
+export function FavoritesProvider({ children }: { children: ReactNode }) {
+  const [favoriteIds, setFavoriteIds] = useState<string[]>([]); // <-- CAMBIO: de number[] a string[]
+ 
+
+  const addFavorite = (id: string) => {
     setFavoriteIds((prevIds) => [...prevIds, id]);
   };
 
-  const removeFavorite = (id: number) => {
+  const removeFavorite = (id: string) => {
     setFavoriteIds((prevIds) => prevIds.filter((favId) => favId !== id));
   };
 
-  const isFavorite = (id: number) => {
+  const isFavorite = (id: string) => {
     return favoriteIds.includes(id);
   };
 

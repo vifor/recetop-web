@@ -43,7 +43,7 @@ export default function RecipeDetailModal({ recipe, onClose }: RecipeDetailModal
                 {recipe && (
                   <>
                     <Dialog.Title as="h3" className="text-2xl font-bold leading-6 text-gray-900 dark:text-white">
-                      {recipe.title}
+                      {recipe.name}
                     </Dialog.Title>
                     <div className="mt-4 relative h-60 w-full">
                        <Image src={recipe.imageUrl} alt={recipe.title} fill className="object-cover rounded-md"/>
